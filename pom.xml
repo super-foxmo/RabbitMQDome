@@ -11,6 +11,8 @@
     <modules>
         <module>RabbitMQ-Dome1</module>
         <module>RabbitMQ-Dome2</module>
+        <module>RabbitMQ-Dome3</module>
+        <module>RabbitMQ-Dome4</module>
     </modules>
 
     <properties>
