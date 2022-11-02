@@ -6,8 +6,7 @@ import com.rabbitmq.client.Connection;
 
 import java.io.IOException;
 
-//work queue模型（一对多）
-public class Provider {
+ public class Provider {
     public static void main(String[] args) throws IOException {
         Connection connection = RabbitMQUtils.getConnection();
 

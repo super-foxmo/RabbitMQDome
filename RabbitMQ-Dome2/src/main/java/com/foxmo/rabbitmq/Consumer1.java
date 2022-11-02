@@ -10,6 +10,7 @@ public class Consumer1 {
         Connection connection = RabbitMQUtils.getConnection();
         Channel channel = connection.createChannel();
         //设置通道每次只能消费一个消息
+        //这就相当于设置consumer的信道容量，0就是无限大，1就是1，2就是2，但是分发方式还是轮询，只不过容量满了就会跳过
         channel.basicQos(1);
 
         channel.queueDeclare("work",false,false,false,null);

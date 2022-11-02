@@ -13,9 +13,10 @@
         <module>RabbitMQ-Dome2</module>
         <module>RabbitMQ-Dome3</module>
         <module>RabbitMQ-Dome4</module>
-        <module>RabbirMQ-Dome5</module>
         <module>RabbitMQ-Dome5</module>
+        <module>RabbitMQ-Dome6</module>
         <module>springboot-rabbitmq</module>
+        <module>RabbitMQ-Dome6</module>
     </modules>
 
     <properties>
