@@ -2,10 +2,8 @@ package com.foxmo.rabbitmq;
 
 import com.foxmo.rabbitmq.utils.RabbitMQUtils;
 import com.rabbitmq.client.*;
-import org.junit.Test;
 
 import java.io.IOException;
-import java.util.concurrent.TimeoutException;
 
 public class Consumer {
     public static void main(String[] args) throws IOException {

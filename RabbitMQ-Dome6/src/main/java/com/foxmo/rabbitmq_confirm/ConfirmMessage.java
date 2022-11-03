@@ -130,8 +130,9 @@ public class ConfirmMessage {
 
         System.out.println(concurrentSkipListMap.toString());
         System.out.println("*******************************");
-        Thread.sleep(7000);
+        Thread.sleep(10000);
 
         System.out.println(concurrentSkipListMap.toString());
+        System.out.println("*******************************");
     }
 }
