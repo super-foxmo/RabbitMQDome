@@ -1,5 +1,6 @@
 package com.example.springbootrabbitmq2.com.foxmo.rabbitmq.controller;
 
+import com.example.springbootrabbitmq2.com.foxmo.rabbitmq.config.DelayedQueueConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,14 +14,14 @@ import java.util.Date;
 
 @Slf4j
 @RestController
-@RequestMapping("ttl")
+@RequestMapping("/ttl")
 public class SendMessageController {
     private static final String NORMAL_EXCHANGE = "normal_exchange";
 
     @Resource
     private RabbitTemplate rabbitTemplate;
 
-    @GetMapping("sendMessage/{message}")
+    @GetMapping("/sendMessage/{message}")
     public void sendMessage(@PathVariable("message") String message) {
         log.info("当前时间：{}，发送消息：{}",new Date().toString(),message);
         //发送消息
@@ -51,4 +52,18 @@ public class SendMessageController {
         });
 
     }
+
+    @GetMapping("/sendDelayedMessage/{message}/{ttlTime}")
+    public void sendDelayedMessage(@PathVariable("message") String message,
+                                   @PathVariable("ttlTime") Integer ttlTime) {
+        log.info("当前时间：{}，发送一条延迟时长为{}的消息：{}",new Date().toString(),ttlTime,message);
+        //发送消息
+        rabbitTemplate.convertAndSend(DelayedQueueConfig.DELAYED_EXCHANGE_NAME,DelayedQueueConfig.DELAYED_ROUTING_KEY,("自定义延迟消息：" + message).getBytes(StandardCharsets.UTF_8), msg ->{
+            //设置延迟时长
+            msg.getMessageProperties().setDelay(ttlTime);
+            return msg;
+        });
+    }
+
+
 }
